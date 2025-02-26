@@ -22,7 +22,11 @@ const Dialog = ({
 
   const clickedOutsideModal = (e) => {
     console.log(e.target);
-    if (isModalOpen && !dialogRef.current?.contains(e.target)) {
+    if (
+      isModalOpen &&
+      dialogRef.current &&
+      !dialogRef.current.contains(e.target)
+    ) {
       closeModal();
       setIsModalOpen(false);
     }
