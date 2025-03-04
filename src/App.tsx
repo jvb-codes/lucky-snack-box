@@ -4,6 +4,7 @@ import styles from "./css/images.module.css";
 import Dialog from "./components/Dialog";
 import snackList from "./data/snackList";
 import Overlay from "./components/Overlay";
+import image from "./assets/alfort original.jpg";
 
 class Snack {
   id: string;
@@ -39,9 +40,10 @@ function App() {
   const dialogRef = useRef(null);
 
   useEffect(() => {
-    const snacks = snackList.map(
-      (item) => new Snack(item.name, item.description, item.link)
-    );
+    const snacks = snackList.map((item) => {
+      return new Snack(item.name, item.description, item.link);
+    });
+
     setSnacksArr(snacks);
   }, []);
 
@@ -81,6 +83,7 @@ function App() {
   };
 
   const images = snacksArr?.map((snack) => {
+    console.log(snacksArr);
     return (
       <div key={snack.title} style={{ position: "relative" }}>
         {snack.isHover ? (
