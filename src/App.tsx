@@ -4,7 +4,7 @@ import styles from "./css/images.module.css";
 import Dialog from "./components/Dialog";
 import snackList from "./data/snackList";
 import Overlay from "./components/Overlay";
-import image from "./assets/alfort original.jpg";
+const BASE_URL = import.meta.env.BASE_URL;
 
 class Snack {
   id: string;
@@ -16,7 +16,7 @@ class Snack {
 
   constructor(fileName: string, description: string, link: string) {
     this.id = fileName;
-    this.fileName = "/mysteryBox/feb2025/" + fileName + ".jpg";
+    this.fileName = BASE_URL + "/mysteryBox/feb2025/" + fileName + ".jpg";
     this.title = fileName.toUpperCase();
     this.isHover = false;
     this.description = description;
