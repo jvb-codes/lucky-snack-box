@@ -61,6 +61,8 @@
 .dialog-text
 {
     line-height: 1.5;
+    height: 100px;
+    overflow: scroll
 }
 
 .dialog-container
