@@ -83,7 +83,6 @@ function App() {
   };
 
   const images = snacksArr?.map((snack) => {
-    console.log(snacksArr);
     return (
       <div key={snack.title} style={{ position: "relative" }}>
         {snack.isHover ? (
