@@ -1,6 +1,6 @@
 import styles from "../css/images.module.css";
 import { SnackType } from "../App";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 interface DialogPropType {
   clicked: SnackType | null;
@@ -20,8 +20,9 @@ const Dialog = ({
     setIsModalOpen(false);
   };
 
+  const dialogScrollRef = useRef(null);
+
   const clickedOutsideModal = (e) => {
-    console.log(e.target);
     if (
       isModalOpen &&
       dialogRef.current &&
@@ -40,6 +41,10 @@ const Dialog = ({
     };
   }, [clicked]);
 
+  useEffect(() => {
+    dialogScrollRef.current.scrollTop = 0;
+  }, [clicked]);
+
   return (
     <dialog className={styles.dialog} ref={dialogRef}>
       <div onClick={() => closeModal()} className={styles["dialog-close"]}>
@@ -47,7 +52,7 @@ const Dialog = ({
       </div>
       <div className={styles["dialog-content"]}>
         <p className={styles["dialog-title"]}>{clicked?.title}</p>
-        <div className={styles["dialog-container"]}>
+        <div ref={dialogScrollRef} className={styles["dialog-container"]}>
           <img src={clicked?.fileName} />
           <p className={styles["dialog-text"]}>{clicked?.description}</p>
         </div>

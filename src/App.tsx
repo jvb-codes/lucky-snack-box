@@ -100,7 +100,9 @@ function App() {
             src={snack.fileName}
             className={styles.img}
           />
-          <p className={styles["snack-titles"]}>{snack.title}</p>
+          <div className={styles["snack-titles"]}>
+            <p>{snack.title}</p>
+          </div>
         </div>
       </div>
     );
